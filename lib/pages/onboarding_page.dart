@@ -94,6 +94,13 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             fontWeight: FontWeight.w400),
                       ),
                     ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: _buildPagerIndicator(),
+                    ),
                     Expanded(
                         child: Container(
                       child: Align(
@@ -126,6 +133,25 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               }),
         ),
       ),
+    );
+  }
+
+  List<Widget> _buildPagerIndicator() {
+    List<Widget> widgets = [];
+    for (int i = 0; i < _noOfPages; i++) {
+      widgets.add(_indicator(_currentPage == i));
+    }
+    return widgets;
+  }
+
+  Widget _indicator(bool isCurrentPage) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 4.0),
+      width: 30.0,
+      height: 4.0,
+      decoration: BoxDecoration(
+          color: isCurrentPage ? Color(0xffED5A6B) : Colors.black12,
+          borderRadius: BorderRadius.circular(5.0)),
     );
   }
 }
